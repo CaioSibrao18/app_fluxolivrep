@@ -1,5 +1,5 @@
-import 'package:app_fluxolivrep/src/widget/input_login_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:app_fluxolivrep/src/widget/input_login_widget.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -9,9 +9,9 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/img_fundologin.png'),
+            image: AssetImage('assets/images/img_fundologin.png'), // Verifique se a imagem está no local correto
             fit: BoxFit.cover,
           ),
         ),
@@ -20,33 +20,39 @@ class LoginPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Logo
               const SizedBox(
                 height: 200,
                 width: 200,
                 child: Image(image: AssetImage('assets/images/et.png')),
               ),
               const SizedBox(height: 30),
-              InputLoginWidget(
+
+              // Campos de entrada
+              const InputLoginWidget(
                 icon: Icons.person_outline,
                 hint: 'Usuário',
                 obscure: false,
               ),
-              InputLoginWidget(
+              const InputLoginWidget(
                 icon: Icons.lock_outline,
-                hint: 'Password',
+                hint: 'Senha',
                 obscure: true,
               ),
               const SizedBox(height: 30),
+
+              // Botão de Login
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFFAFAE24),
-                  minimumSize: Size(double.infinity, 60),
+                  minimumSize: const Size(double.infinity, 60),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14),
                   ),
                 ),
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/home');
+                  // Navega para a Home após o login
+                  Navigator.of(context).pushReplacementNamed('/home');
                 },
                 child: const Text(
                   'Acessar',
@@ -58,13 +64,20 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
+
+              // Botão para Cadastro
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed('/home');
+                  // Navega para a tela de Cadastro
+                  Navigator.of(context).pushNamed('/cadastrar');
                 },
                 child: const Text(
                   'Novo Usuário',
-                  style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 20),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    decoration: TextDecoration.underline, // Adiciona um sublinhado para destacar o botão
+                  ),
                 ),
               ),
             ],
